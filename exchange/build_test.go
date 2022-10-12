@@ -70,6 +70,7 @@ func TestBuildHTTPRequest(t *testing.T) {
 		t.Errorf("unexpected URL: expected=%v, actual=%v", expectedURL, actual.URL)
 	}
 	expectedHeader := http.Header{
+		"Accept":        []string{"application/json, */*;q=0.5"},
 		"X-Foo":         []string{"fizz buzz"},
 		"Content-Type":  []string{"application/json"},
 		"User-Agent":    []string{fmt.Sprintf("httpie-go/%s", version.Current())},
@@ -187,6 +188,7 @@ func TestBuildHTTPHeader(t *testing.T) {
 
 	// Verify
 	expected := http.Header{
+		"Accept":        []string{"application/json, */*;q=0.5"},
 		"X-Foo":         []string{"foo"},
 		"X-From-File":   []string{"test test"},
 		"X-Multi-Value": []string{"value 1", "value 2"},

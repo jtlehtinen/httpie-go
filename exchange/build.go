@@ -93,6 +93,11 @@ func buildHTTPHeader(in *input.Input) (http.Header, error) {
 		}
 		header.Add(field.Name, value)
 	}
+
+	if header.Get("Accept") == "" {
+		header.Set("Accept", "application/json, */*;q=0.5")
+	}
+
 	return header, nil
 }
 
